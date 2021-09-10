@@ -6,12 +6,12 @@ import {
   useColorMode,
   useColorModeValue,
   theme,
-} from "@chakra-ui/react";
-import { StoryContext } from "@storybook/react";
-import * as React from "react";
-import { FaMoon, FaSun } from "react-icons/fa";
+} from '@chakra-ui/react';
+import { StoryContext } from '@storybook/react';
+import * as React from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa';
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -21,19 +21,19 @@ export const parameters = {
 };
 export const globalTypes = {
   direction: {
-    name: "Direction",
-    description: "Direction for layout",
-    defaultValue: "LTR",
+    name: 'Direction',
+    description: 'Direction for layout',
+    defaultValue: 'LTR',
     toolbar: {
-      icon: "globe",
-      items: ["LTR", "RTL"],
+      icon: 'globe',
+      items: ['LTR', 'RTL'],
     },
   },
 };
 const ColorModeToggleBar = () => {
   const { toggleColorMode } = useColorMode();
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-  const nextMode = useColorModeValue("dark", "light");
+  const nextMode = useColorModeValue('dark', 'light');
 
   return (
     <Flex justify="flex-end" mb={4}>
@@ -56,7 +56,7 @@ const withChakra = (StoryFn: Function, context: StoryContext) => {
 
   return (
     <ChakraProvider theme={extendTheme({ direction: dir })}>
-      <div dir={dir} id="story-wrapper" style={{ minHeight: "100vh" }}>
+      <div dir={dir} id="story-wrapper" style={{ minHeight: '100vh' }}>
         <ColorModeToggleBar />
         <StoryFn />
       </div>

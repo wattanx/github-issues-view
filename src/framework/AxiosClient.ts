@@ -1,5 +1,5 @@
-import axios from "axios";
-import { IHttpClient } from "./IHttpClient";
+import axios from 'axios';
+import { IHttpClient } from './IHttpClient';
 
 export class AxiosClient implements IHttpClient {
   public get<TResponse>(url: string): Promise<TResponse> {
@@ -7,7 +7,7 @@ export class AxiosClient implements IHttpClient {
   }
   public post<TRequest, TResponse>(
     url: string,
-    request: TRequest
+    request: TRequest,
   ): Promise<TResponse> {
     return axios.post<TResponse>(url, request).then((res) => res.data);
   }

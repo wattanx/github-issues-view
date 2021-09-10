@@ -1,10 +1,10 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import Head from "next/head";
-import { usePageView } from "@hooks";
-import { config } from "@site.config";
+import { ChakraProvider } from '@chakra-ui/react';
+import Head from 'next/head';
+import { usePageView } from '@hooks';
+import { config } from '@site.config';
 
-import theme from "../theme";
-import { AppProps } from "next/app";
+import theme from '../theme';
+import { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   usePageView();
