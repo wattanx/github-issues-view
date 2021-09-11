@@ -1,19 +1,23 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import Head from 'next/head';
-import { usePageView } from '@hooks';
-import { config } from '@site.config';
+import dynamic from 'next/dynamic';
+import { config } from 'site.config';
 
 import theme from '../theme';
 import { AppProps } from 'next/app';
+import { AxiosClient, HttpClientProvider } from 'framework';
+
+const client = new AxiosClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
-  usePageView();
-
+  const SafeHydrate = dynamic(() => import('components/SafeHydrate'), {
+    ssr: false,
+  });
   const title = config.siteMeta.title;
   const pageUrl = config.baseUrl;
   const description = config.siteMeta.description;
   return (
-    <>
+    <SafeHydrate>
       <Head>
         <title>{title}</title>
         <meta property="og:title" content={title} />
@@ -28,9 +32,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         )}
       </Head>
       <ChakraProvider resetCSS theme={theme}>
-        <Component {...pageProps} />
+        <HttpClientProvider client={client}>
+          <Component {...pageProps} />
+        </HttpClientProvider>
       </ChakraProvider>
-    </>
+    </SafeHydrate>
   );
 }
 
