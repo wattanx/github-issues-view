@@ -1,3 +1,12 @@
+export type GitHubRepositoryType = {
+  open_issues: number;
+  open_issues_count: number;
+};
+
+export type GitHubIssueResponseHeader = {
+  link: string;
+};
+
 export type GitHubIssueType = {
   id: number;
   node_id: string;

@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import {
   Link as ChakraLink,
   Text,
-  Code,
   List,
   ListIcon,
   ListItem,
@@ -19,22 +19,13 @@ const Index = () => (
   <Container height="100vh">
     <Hero />
     <Main>
-      <Text>
-        Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-        <Code>typescript</Code>.
-      </Text>
+      <Text>GitHub Issues View</Text>
 
       <List spacing={3} my={0}>
         <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
+          <Link href="/issues">
+            <a>Issues</a>
+          </Link>
         </ListItem>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
