@@ -1,5 +1,12 @@
 import Link from 'next/link';
-import { Box, ClosedStatus, Flex, OpenedStatus, Stack, Text } from 'components';
+import {
+  Box,
+  ClosedStatus,
+  Flex,
+  OpenedStatus,
+  Stack,
+  Text,
+} from '../components';
 import { IssueStateType } from 'types/github';
 import { IssueType } from 'framework';
 
