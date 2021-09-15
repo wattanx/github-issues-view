@@ -5,6 +5,7 @@ import {
   List,
   ListIcon,
   ListItem,
+  Box,
 } from '@chakra-ui/react';
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
 
@@ -17,29 +18,12 @@ import { Footer } from '../components/Footer';
 
 const Index = () => (
   <Container height="100vh">
-    <Hero />
-    <Main>
-      <Text>GitHub Issues View</Text>
+    <Box as="section" pt="6rem" pb={{ base: '0', md: '5rem' }}>
+      <Box textAlign="center">
+        <Hero />
+      </Box>
+    </Box>
 
-      <List spacing={3} my={0}>
-        <ListItem>
-          <Link href="/issues">
-            <a>Issues</a>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </Main>
-
-    <DarkModeSwitch />
-    <Footer>
-      <Text>Next ❤️ Chakra</Text>
-    </Footer>
     <CTA />
   </Container>
 );
