@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { ContentWrapper, IssuesListView } from 'components';
+import { Box, Center, ContentWrapper, IssuesListView } from 'components';
 import { useRouter } from 'next/dist/client/router';
 import { useIssues } from '@issues';
 import { Pager } from 'components/Pager';
@@ -13,16 +13,20 @@ const Issues: NextPage = () => {
 
   return (
     <ContentWrapper>
-      <IssuesListView issues={data?.issues} />
-      {data && (
-        <Pager
-          first={1}
-          prev={data?.prevPage ?? 0}
-          current={data?.currentPage ?? 0}
-          next={data?.nextPage ?? 0}
-          last={data?.lastPage ?? 0}
-        />
-      )}
+      <Box borderWidth="1px" borderColor="#e2e2e2" borderRadius="6px">
+        <IssuesListView issues={data?.issues} />
+      </Box>
+      <Center marginTop={3}>
+        {data && (
+          <Pager
+            first={1}
+            prev={data?.prevPage ?? 0}
+            current={data?.currentPage ?? 0}
+            next={data?.nextPage ?? 0}
+            last={data?.lastPage ?? 0}
+          />
+        )}
+      </Center>
     </ContentWrapper>
   );
 };

@@ -6,6 +6,9 @@ import { config } from 'site.config';
 import theme from '../theme';
 import { AppProps } from 'next/app';
 import { AxiosClient, HttpClientProvider } from 'framework';
+import { SiteHeader } from 'components/SiteHeader';
+import 'highlight.js/styles/github.css';
+import 'github-markdown-css';
 
 const client = new AxiosClient();
 
@@ -33,6 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ChakraProvider resetCSS theme={theme}>
         <HttpClientProvider client={client}>
+          <SiteHeader />
           <Component {...pageProps} />
         </HttpClientProvider>
       </ChakraProvider>

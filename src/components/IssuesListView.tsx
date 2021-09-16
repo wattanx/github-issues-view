@@ -1,5 +1,12 @@
-import Link from 'next/link';
-import { Box, ClosedStatus, Flex, OpenedStatus, Stack, Text } from 'components';
+import NextLink from 'next/link';
+import {
+  Box,
+  ClosedStatus,
+  Flex,
+  OpenedStatus,
+  Stack,
+  Text,
+} from '../components';
 import { IssueStateType } from 'types/github';
 import { IssueType } from 'framework';
 
@@ -34,19 +41,23 @@ const IssuesListCell: React.VFC<IssuesListCellProps> = ({
   title,
   issueNumber,
 }) => (
-  <Flex>
-    <Box paddingTop={3}>
+  <Flex
+    borderTopColor="#e2e2e2"
+    borderTopWidth="1px"
+    _first={{ borderTopColor: 'transparent' }}
+  >
+    <Box paddingTop={3} paddingLeft={3}>
       {state === 'open' && <OpenedStatus />}
       {state === 'closed' && <ClosedStatus />}
     </Box>
     <Box padding={2}>
-      <Link
+      <NextLink
         href="/issues/[issueNumber]"
         as={`/issues/${issueNumber}`}
         shallow={true}
       >
         <Text>{title}</Text>
-      </Link>
+      </NextLink>
       <Text fontSize="sm">#{issueNumber}</Text>
     </Box>
   </Flex>

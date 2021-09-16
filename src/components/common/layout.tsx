@@ -7,10 +7,14 @@ import {
   StackProps as ChakraStackProps,
   Flex as ChakraFlex,
   FlexProps as ChakraFlexProps,
+  HStack as ChakraHStack,
+  forwardRef,
 } from '@chakra-ui/react';
 
 export type BoxProps = ChakraBoxProps;
-export const Box: React.FC<BoxProps> = (props) => <ChakraBox {...props} />;
+export const Box = forwardRef<BoxProps, 'div' | 'a'>((props, ref) => (
+  <ChakraBox {...props} ref={ref} />
+));
 
 export type CenterProps = ChakraCenterProps;
 export const Center: React.FC<CenterProps> = (props) => (
@@ -24,3 +28,7 @@ export const Stack: React.FC<StackProps> = (props) => (
 
 export type FlexProps = ChakraFlexProps;
 export const Flex: React.FC<FlexProps> = (props) => <ChakraFlex {...props} />;
+
+export const HStack: React.FC<StackProps> = (props) => (
+  <ChakraHStack {...props} />
+);

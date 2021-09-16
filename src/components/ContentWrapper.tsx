@@ -1,4 +1,4 @@
-import { Box } from 'components';
+import { Box } from '../components';
 
 export type ContentWrapperProps = {
   children: React.ReactNode;
