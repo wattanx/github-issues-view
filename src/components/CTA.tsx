@@ -1,7 +1,8 @@
 import NextLink from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 import { DiGithubBadge } from 'react-icons/di';
-import { Container, Button, Stack } from 'components';
+import { Button } from '@chakra-ui/react';
+import { Container, Stack } from 'components';
 
 export const CTA = () => (
   <Container

@@ -1,5 +1,4 @@
-import { Text } from '@chakra-ui/react';
-import { Box, ContentWrapper } from 'components';
+import { ContentWrapper } from 'components';
 import { IssueDetail } from 'components/IssueDetail';
 import { useIssue } from 'framework/github/use-issue';
 import { NextPage } from 'next';
