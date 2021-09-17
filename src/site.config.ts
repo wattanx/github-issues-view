@@ -1,7 +1,7 @@
 export const config = {
   siteMeta: {
-    title: '',
-    description: '',
+    title: 'GitHub Issues View',
+    description: 'GitHubのIssueを閲覧するViewerです',
   },
   baseUrl:
     process.env.NODE_ENV === 'production'
