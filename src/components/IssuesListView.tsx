@@ -5,27 +5,30 @@ import {
   Flex,
   OpenedStatus,
   Stack,
+  Skeleton,
   Text,
 } from '../components';
 import { IssueStateType } from 'types/github';
 import { IssueType } from 'framework';
 
-export const IssuesListView: React.VFC<{ issues?: IssueType[] }> = ({
-  issues,
-}) => {
+export const IssuesListView: React.VFC<{
+  issues?: IssueType[];
+}> = ({ issues }) => {
   return (
     <Stack spacing="0">
-      {issues &&
-        issues.map((x) => {
-          return (
-            <IssuesListCell
-              key={x.issueNumber}
-              title={x.title}
-              issueNumber={x.issueNumber}
-              state={x.state}
-            />
-          );
-        })}
+      <Skeleton isLoaded={!!issues}>
+        {issues &&
+          issues.map((x) => {
+            return (
+              <IssuesListCell
+                key={x.issueNumber}
+                title={x.title}
+                issueNumber={x.issueNumber}
+                state={x.state}
+              />
+            );
+          })}
+      </Skeleton>
     </Stack>
   );
 };

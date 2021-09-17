@@ -1,6 +1,6 @@
-import { Box, Button, IconButton, Spacer } from '@chakra-ui/react';
+import { IconButton } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { Flex } from './common';
+import { Button, Flex, Spacer } from './common';
 import Link from 'next/link';
 export type PagerProps = {
   first: number;
@@ -52,13 +52,8 @@ export const Pager: React.VFC<PagerProps> = ({
         <PageLink pageNumber={current - 1} />
         <Spacer />
         <PageLink pageNumber={current} current={current} />
-      </>
-    )}
-    {current > 4 && last > current + 1 && (
-      <>
         <Spacer />
-        <PageLink pageNumber={current + 1} />
-        <Spacer />
+        {current + 1 <= last && <PageLink pageNumber={current + 1} />}
       </>
     )}
     {current > 4 && last > current + 1 && (
@@ -77,7 +72,7 @@ export const Pager: React.VFC<PagerProps> = ({
       </>
     )}
 
-    {current + 2 > last && <PageLink pageNumber={last} />}
+    {current + 2 < last && <PageLink pageNumber={last} />}
     <Spacer />
     {last > current && (
       <Link href={`/issues?page=${next}&per_page=10`} shallow={true}>

@@ -1,4 +1,4 @@
-import { ContentWrapper } from 'components';
+import { ContentWrapper, Skeleton } from 'components';
 import { IssueDetail } from 'components/IssueDetail';
 import { useIssue } from 'framework/github/use-issue';
 import { NextPage } from 'next';
@@ -11,12 +11,14 @@ const IssueDetailPage: NextPage = () => {
 
   return (
     <ContentWrapper>
-      <IssueDetail
-        title={data?.title ?? ''}
-        body={data?.body ?? ''}
-        state={data?.state ?? ''}
-        issueNumber={data?.issueNumber.toString() ?? '0'}
-      />
+      <Skeleton isLoaded={!!data}>
+        <IssueDetail
+          title={data?.title ?? ''}
+          body={data?.body ?? ''}
+          state={data?.state ?? ''}
+          issueNumber={data?.issueNumber.toString() ?? '0'}
+        />
+      </Skeleton>
     </ContentWrapper>
   );
 };

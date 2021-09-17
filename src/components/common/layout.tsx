@@ -9,6 +9,8 @@ import {
   FlexProps as ChakraFlexProps,
   HStack as ChakraHStack,
   forwardRef,
+  Spacer as ChakraSpacer,
+  SpacerProps as ChakraSpacerProps,
 } from '@chakra-ui/react';
 
 export type BoxProps = ChakraBoxProps;
@@ -31,4 +33,9 @@ export const Flex: React.FC<FlexProps> = (props) => <ChakraFlex {...props} />;
 
 export const HStack: React.FC<StackProps> = (props) => (
   <ChakraHStack {...props} />
+);
+
+export type SpacerProps = ChakraSpacerProps;
+export const Spacer: React.VFC<SpacerProps> = (props) => (
+  <ChakraSpacer {...props} />
 );

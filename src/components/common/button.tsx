@@ -1,6 +1,7 @@
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
+  forwardRef,
 } from '@chakra-ui/react';
 
 export type ButtonProps = ChakraButtonProps & {
@@ -8,6 +9,6 @@ export type ButtonProps = ChakraButtonProps & {
   target?: string;
 };
 
-export const Button: React.FC<ButtonProps> = (props) => (
-  <ChakraButton {...props} />
-);
+export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => (
+  <ChakraButton {...props} ref={ref} />
+));
