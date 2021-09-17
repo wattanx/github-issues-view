@@ -55,8 +55,11 @@ const IssuesListCell: React.VFC<IssuesListCellProps> = ({
         href="/issues/[issueNumber]"
         as={`/issues/${issueNumber}`}
         shallow={true}
+        passHref
       >
-        <Text>{title}</Text>
+        <Box as="a">
+          <Text>{title}</Text>
+        </Box>
       </NextLink>
       <Text fontSize="sm">#{issueNumber}</Text>
     </Box>

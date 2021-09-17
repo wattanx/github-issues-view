@@ -1,7 +1,4 @@
-import { Box } from '@chakra-ui/react';
-import { Hero } from '../components/Hero';
-import { Container } from '../components/Container';
-import { CTA } from '../components/CTA';
+import { Container, CTA, Hero, Box } from '../components';
 
 const Index = () => (
   <Container height="100vh">
