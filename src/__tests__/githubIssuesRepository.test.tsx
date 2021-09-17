@@ -1,11 +1,9 @@
 import {
-  AxiosClient,
   HttpClientProvider,
   IHttpClient,
   ResponseDTO,
   useIssues,
 } from 'framework';
-import { GithubIssuesRepository } from 'infrastructures';
 import { act, renderHook } from '@testing-library/react-hooks';
 import React from 'react';
 import { GitHubIssueType } from 'types/github';
