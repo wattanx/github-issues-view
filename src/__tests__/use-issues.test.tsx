@@ -18,7 +18,13 @@ describe('use-issues Test', () => {
       </SWRConfig>
     );
     const { result, waitForNextUpdate } = renderHook(
-      () => useIssues('1', '10'),
+      () =>
+        useIssues({
+          owner: 'facebook',
+          repositoryName: 'react',
+          pageNumber: '1',
+          perPage: '10',
+        }),
       {
         wrapper: wrapper,
       },
@@ -51,7 +57,13 @@ describe('use-issues Test', () => {
       </SWRConfig>
     );
     const { result, waitForNextUpdate } = renderHook(
-      () => useIssues('1', '10'),
+      () =>
+        useIssues({
+          owner: 'facebook',
+          repositoryName: 'react',
+          pageNumber: '1',
+          perPage: '10',
+        }),
       {
         wrapper: wrapper,
       },

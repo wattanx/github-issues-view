@@ -1,14 +1,30 @@
 import DOMPurify from 'dompurify';
-import { IssueType, toHtml, useData, useHttpClient } from 'framework';
+import {
+  IssueType,
+  toHtml,
+  useData,
+  useHttpClient,
+  ApplicationError,
+} from 'framework';
 import { GitHubIssueType } from 'types/github';
 
-export const useIssue = (issueNumber: string) => {
+export type UseIssueProps = {
+  owner: string;
+  repositoryName: string;
+  issueNumber: string;
+};
+
+export const useIssue = ({
+  owner,
+  repositoryName,
+  issueNumber,
+}: UseIssueProps) => {
   const client = useHttpClient();
   const fetcher = async (url: string) => {
     const res = await client.get<GitHubIssueType>(url);
 
     if (!res.data.title) {
-      const error = new Error('There is no data.');
+      const error = new ApplicationError('There is no data.');
       throw error;
     }
 
@@ -23,7 +39,7 @@ export const useIssue = (issueNumber: string) => {
   };
 
   return useData<IssueType>(
-    `https://api.github.com/repos/facebook/react/issues/${issueNumber}`,
+    `https://api.github.com/repos/${owner}/${repositoryName}/issues/${issueNumber}`,
     fetcher,
   );
 };

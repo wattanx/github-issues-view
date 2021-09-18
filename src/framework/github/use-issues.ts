@@ -1,7 +1,14 @@
 import { useHttpClient } from 'framework';
-import { IssueType, useData } from 'framework/common';
+import { IssueType, useData, ApplicationError } from 'framework/common';
 import { GitHubIssueType } from 'types/github';
 import { getPageInfo } from './GitHubUtils';
+
+export type UseIssuesProps = {
+  owner: string;
+  repositoryName: string;
+  pageNumber: string;
+  perPage: string;
+};
 
 export type UseIssuesReturnType = {
   issues: IssueType[];
@@ -11,13 +18,18 @@ export type UseIssuesReturnType = {
   lastPage: number;
 };
 
-export const useIssues = (pageNumber: string, perPage: string) => {
+export const useIssues = ({
+  owner,
+  repositoryName,
+  pageNumber,
+  perPage,
+}: UseIssuesProps) => {
   const client = useHttpClient();
   const fetcher = async (url: string): Promise<UseIssuesReturnType> => {
     const res = await client.get<GitHubIssueType[]>(url);
 
     if (res.data.length === 0) {
-      const error = new Error('There is no data.');
+      const error = new ApplicationError('There is no data.');
       throw error;
     }
 
@@ -40,7 +52,7 @@ export const useIssues = (pageNumber: string, perPage: string) => {
   };
 
   return useData<UseIssuesReturnType>(
-    `https://api.github.com/repos/facebook/react/issues?page=${pageNumber}&per_page=${perPage}`,
+    `https://api.github.com/repos/${owner}/${repositoryName}/issues?page=${pageNumber}&per_page=${perPage}`,
     fetcher,
   );
 };

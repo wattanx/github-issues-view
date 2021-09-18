@@ -17,9 +17,17 @@ describe('use-issues Test', () => {
         </HttpClientProvider>
       </SWRConfig>
     );
-    const { result, waitForNextUpdate } = renderHook(() => useIssue('123'), {
-      wrapper: wrapper,
-    });
+    const { result, waitForNextUpdate } = renderHook(
+      () =>
+        useIssue({
+          owner: 'facebook',
+          repositoryName: 'react',
+          issueNumber: '123',
+        }),
+      {
+        wrapper: wrapper,
+      },
+    );
 
     act(() => {
       // 一回呼び出すと中身が入る
@@ -44,9 +52,17 @@ describe('use-issues Test', () => {
         </HttpClientProvider>
       </SWRConfig>
     );
-    const { result, waitForNextUpdate } = renderHook(() => useIssue('0'), {
-      wrapper: wrapper,
-    });
+    const { result, waitForNextUpdate } = renderHook(
+      () =>
+        useIssue({
+          owner: 'facebook',
+          repositoryName: 'react',
+          issueNumber: '0',
+        }),
+      {
+        wrapper: wrapper,
+      },
+    );
 
     act(() => {
       // 一回呼び出すと中身が入る

@@ -1,18 +1,41 @@
 import { NextPage } from 'next';
-import { Box, Center, ContentWrapper, IssuesListView, Text } from 'components';
+import {
+  Box,
+  Center,
+  ContentWrapper,
+  IssuesListView,
+  Stack,
+  Text,
+} from 'components';
 import { useRouter } from 'next/dist/client/router';
 import { useIssues } from '@issues';
 import { Pager } from 'components/Pager';
+import { config } from 'site.config';
+import { ApplicationError } from 'framework';
 
 const Issues: NextPage = () => {
   const router = useRouter();
   const pageNumber = router.query.page ?? '1';
   const perPage = router.query.per_page ?? '10';
 
-  const { data, error } = useIssues(pageNumber as string, perPage as string);
+  const { data, error } = useIssues({
+    owner: config.ownerName,
+    repositoryName: config.repositoryName,
+    pageNumber: pageNumber as string,
+    perPage: perPage as string,
+  });
 
   return (
     <ContentWrapper>
+      <Stack padding={2}>
+        <Text>Owner: {config.ownerName}</Text>
+        <Text>Repository: {config.repositoryName}</Text>
+      </Stack>
+      {error && error instanceof ApplicationError && (
+        <Center>
+          <Text>{error.message}</Text>
+        </Center>
+      )}
       {error && (
         <Center>
           <Text>
