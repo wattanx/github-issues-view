@@ -1,4 +1,5 @@
 import NextLink from 'next/link';
+import { config } from 'site.config';
 import {
   Button,
   ChevronLeftIcon,
@@ -25,7 +26,10 @@ export const Pager: React.VFC<PagerProps> = ({
 }) => (
   <Flex width="sm">
     {prev !== 0 && (
-      <NextLink href={`/issues?page=${prev}&per_page=10`} shallow={true}>
+      <NextLink
+        href={`/issues?page=${prev}&per_page=${config.perPage}`}
+        shallow={true}
+      >
         <IconButton aria-label="prev page" icon={<ChevronLeftIcon />} />
       </NextLink>
     )}
@@ -81,7 +85,10 @@ export const Pager: React.VFC<PagerProps> = ({
     {current + 2 < last && <PageLink pageNumber={last} />}
     <Spacer />
     {last > current && (
-      <NextLink href={`/issues?page=${next}&per_page=10`} shallow={true}>
+      <NextLink
+        href={`/issues?page=${next}&per_page=${config.perPage}`}
+        shallow={true}
+      >
         <IconButton aria-label="prev page" icon={<ChevronRightIcon />} />
       </NextLink>
     )}
@@ -92,7 +99,10 @@ const PageLink: React.VFC<{ pageNumber: number; current?: number }> = ({
   pageNumber,
   current,
 }) => (
-  <NextLink href={`/issues?page=${pageNumber}&per_page=10`} shallow={true}>
+  <NextLink
+    href={`/issues?page=${pageNumber}&per_page=${config.perPage}`}
+    shallow={true}
+  >
     <Button background={current === pageNumber ? 'teal.300' : 'none'}>
       {pageNumber}
     </Button>
