@@ -1,7 +1,13 @@
-import { Box, Button, IconButton, Spacer } from '@chakra-ui/react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { Flex } from './common';
-import Link from 'next/link';
+import NextLink from 'next/link';
+import {
+  Button,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  Flex,
+  IconButton,
+  Spacer,
+} from './common';
+
 export type PagerProps = {
   first: number;
   prev: number;
@@ -19,9 +25,9 @@ export const Pager: React.VFC<PagerProps> = ({
 }) => (
   <Flex width="sm">
     {prev !== 0 && (
-      <Link href={`/issues?page=${prev}&per_page=10`} shallow={true}>
+      <NextLink href={`/issues?page=${prev}&per_page=10`} shallow={true}>
         <IconButton aria-label="prev page" icon={<ChevronLeftIcon />} />
-      </Link>
+      </NextLink>
     )}
     <Spacer />
     <PageLink pageNumber={1} current={current} />
@@ -52,13 +58,8 @@ export const Pager: React.VFC<PagerProps> = ({
         <PageLink pageNumber={current - 1} />
         <Spacer />
         <PageLink pageNumber={current} current={current} />
-      </>
-    )}
-    {current > 4 && last > current + 1 && (
-      <>
         <Spacer />
-        <PageLink pageNumber={current + 1} />
-        <Spacer />
+        {current + 1 <= last && <PageLink pageNumber={current + 1} />}
       </>
     )}
     {current > 4 && last > current + 1 && (
@@ -77,12 +78,12 @@ export const Pager: React.VFC<PagerProps> = ({
       </>
     )}
 
-    {current + 2 > last && <PageLink pageNumber={last} />}
+    {current + 2 < last && <PageLink pageNumber={last} />}
     <Spacer />
     {last > current && (
-      <Link href={`/issues?page=${next}&per_page=10`} shallow={true}>
+      <NextLink href={`/issues?page=${next}&per_page=10`} shallow={true}>
         <IconButton aria-label="prev page" icon={<ChevronRightIcon />} />
-      </Link>
+      </NextLink>
     )}
   </Flex>
 );
@@ -91,9 +92,9 @@ const PageLink: React.VFC<{ pageNumber: number; current?: number }> = ({
   pageNumber,
   current,
 }) => (
-  <Link href={`/issues?page=${pageNumber}&per_page=10`} shallow={true}>
+  <NextLink href={`/issues?page=${pageNumber}&per_page=10`} shallow={true}>
     <Button background={current === pageNumber ? 'teal.300' : 'none'}>
       {pageNumber}
     </Button>
-  </Link>
+  </NextLink>
 );

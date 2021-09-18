@@ -1,5 +1,4 @@
-import { Text, Heading, HStack } from '@chakra-ui/react';
-import { Box } from './common';
+import { Box, Heading, HStack } from './common';
 
 export type IssueDetailProps = {
   title: string;
