@@ -4,6 +4,7 @@ import { useRouter } from 'next/dist/client/router';
 import { useIssues } from '@issues';
 import { Pager } from 'components/Pager';
 import { config } from 'site.config';
+import { ApplicationError } from 'framework';
 
 const Issues: NextPage = () => {
   const router = useRouter();
@@ -19,6 +20,11 @@ const Issues: NextPage = () => {
 
   return (
     <ContentWrapper>
+      {error && error instanceof ApplicationError && (
+        <Center>
+          <Text>{error.message}</Text>
+        </Center>
+      )}
       {error && (
         <Center>
           <Text>

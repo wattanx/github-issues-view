@@ -1,5 +1,5 @@
 import { useHttpClient } from 'framework';
-import { IssueType, useData } from 'framework/common';
+import { IssueType, useData, ApplicationError } from 'framework/common';
 import { GitHubIssueType } from 'types/github';
 import { getPageInfo } from './GitHubUtils';
 
@@ -29,7 +29,7 @@ export const useIssues = ({
     const res = await client.get<GitHubIssueType[]>(url);
 
     if (res.data.length === 0) {
-      const error = new Error('There is no data.');
+      const error = new ApplicationError('There is no data.');
       throw error;
     }
 

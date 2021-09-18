@@ -1,5 +1,11 @@
 import DOMPurify from 'dompurify';
-import { IssueType, toHtml, useData, useHttpClient } from 'framework';
+import {
+  IssueType,
+  toHtml,
+  useData,
+  useHttpClient,
+  ApplicationError,
+} from 'framework';
 import { GitHubIssueType } from 'types/github';
 
 export type UseIssueProps = {
@@ -18,7 +24,7 @@ export const useIssue = ({
     const res = await client.get<GitHubIssueType>(url);
 
     if (!res.data.title) {
-      const error = new Error('There is no data.');
+      const error = new ApplicationError('There is no data.');
       throw error;
     }
 

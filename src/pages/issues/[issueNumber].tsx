@@ -7,8 +7,9 @@ import {
   Text,
   IssueDetail,
 } from 'components';
-import { useIssue } from 'framework/github/use-issue';
+import { useIssue } from '@issues';
 import { config } from 'site.config';
+import { ApplicationError } from 'framework';
 
 const IssueDetailPage: NextPage = () => {
   const router = useRouter();
@@ -21,6 +22,11 @@ const IssueDetailPage: NextPage = () => {
 
   return (
     <ContentWrapper>
+      {error && error instanceof ApplicationError && (
+        <Center>
+          <Text>{error.message}</Text>
+        </Center>
+      )}
       {error && (
         <Center>
           <Text>
