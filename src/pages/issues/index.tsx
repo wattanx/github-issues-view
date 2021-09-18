@@ -3,13 +3,19 @@ import { Box, Center, ContentWrapper, IssuesListView, Text } from 'components';
 import { useRouter } from 'next/dist/client/router';
 import { useIssues } from '@issues';
 import { Pager } from 'components/Pager';
+import { config } from 'site.config';
 
 const Issues: NextPage = () => {
   const router = useRouter();
   const pageNumber = router.query.page ?? '1';
   const perPage = router.query.per_page ?? '10';
 
-  const { data, error } = useIssues(pageNumber as string, perPage as string);
+  const { data, error } = useIssues({
+    owner: config.ownerName,
+    repositoryName: config.repositoryName,
+    pageNumber: pageNumber as string,
+    perPage: perPage as string,
+  });
 
   return (
     <ContentWrapper>
