@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { Box, Center, ContentWrapper, IssuesListView } from 'components';
+import { Box, Center, ContentWrapper, IssuesListView, Text } from 'components';
 import { useRouter } from 'next/dist/client/router';
 import { useIssues } from '@issues';
 import { Pager } from 'components/Pager';
@@ -9,10 +9,17 @@ const Issues: NextPage = () => {
   const pageNumber = router.query.page ?? '1';
   const perPage = router.query.per_page ?? '10';
 
-  const { data } = useIssues(pageNumber as string, perPage as string);
+  const { data, error } = useIssues(pageNumber as string, perPage as string);
 
   return (
     <ContentWrapper>
+      {error && (
+        <Center>
+          <Text>
+            An error has occurred. Please refresh your browser and try again.
+          </Text>
+        </Center>
+      )}
       <Box borderWidth="1px" borderColor="#e2e2e2" borderRadius="6px">
         <IssuesListView issues={data?.issues} />
       </Box>

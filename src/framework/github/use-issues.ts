@@ -16,6 +16,11 @@ export const useIssues = (pageNumber: string, perPage: string) => {
   const fetcher = async (url: string): Promise<UseIssuesReturnType> => {
     const res = await client.get<GitHubIssueType[]>(url);
 
+    if (res.data.length === 0) {
+      const error = new Error('There is no data.');
+      throw error;
+    }
+
     const issues: IssueType[] = res.data.map((x) => {
       return {
         title: x.title,
