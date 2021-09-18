@@ -1,17 +1,19 @@
 # GitHub issues view
 
+This is a viewer that allows you to view issues in a specified GitHub Repository.
+
 ## Usage
 
 ```
-# パッケージをインストール
+# Install the package
 $ npm install
 
-# 開発サーバーを起動（localhost:3000）
+# Launch the development server.（localhost:3000）
 $ npm run dev
 
-# アプリケーションを静的生成
+# Static generation of applications
 $ npm run build
 
-# 静的生成したアプリケーションを起動
+# Launch a statically generated application.
 $ npm run start
 ```
