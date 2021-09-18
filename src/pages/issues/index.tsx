@@ -1,5 +1,12 @@
 import { NextPage } from 'next';
-import { Box, Center, ContentWrapper, IssuesListView, Text } from 'components';
+import {
+  Box,
+  Center,
+  ContentWrapper,
+  IssuesListView,
+  Stack,
+  Text,
+} from 'components';
 import { useRouter } from 'next/dist/client/router';
 import { useIssues } from '@issues';
 import { Pager } from 'components/Pager';
@@ -20,6 +27,10 @@ const Issues: NextPage = () => {
 
   return (
     <ContentWrapper>
+      <Stack padding={2}>
+        <Text>Owner: {config.ownerName}</Text>
+        <Text>Repository: {config.repositoryName}</Text>
+      </Stack>
       {error && error instanceof ApplicationError && (
         <Center>
           <Text>{error.message}</Text>
