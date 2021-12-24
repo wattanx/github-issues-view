@@ -19,6 +19,7 @@ export const CTA = () => (
     >
       <NextLink href="/issues" passHref>
         <Button
+          data-testid="get-started"
           h="4rem"
           px="40px"
           fontSize="1.2rem"

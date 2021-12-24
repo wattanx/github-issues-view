@@ -48,6 +48,7 @@ const IssuesListCell: React.VFC<IssuesListCellProps> = ({
     borderTopColor="#e2e2e2"
     borderTopWidth="1px"
     _first={{ borderTopColor: 'transparent' }}
+    data-testid="issues-list"
   >
     <Box paddingTop={3} paddingLeft={3}>
       {state === 'open' && <OpenedStatus />}
