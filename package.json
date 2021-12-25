@@ -14,7 +14,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "e2e": "npx playwright test"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
+    "@playwright/test": "^1.17.1",
     "@storybook/addon-actions": "6.3.8",
     "@storybook/addon-docs": "6.3.8",
     "@storybook/addon-essentials": "6.3.8",
