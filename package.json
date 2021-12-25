@@ -43,7 +43,7 @@
     "rehype-stringify": "9.0.2",
     "remark-highlight.js": "7.0.1",
     "remark-parse": "10.0.0",
-    "remark-rehype": "9.0.0",
+    "remark-rehype": "10.1.0",
     "swr": "1.0.0",
     "unified": "10.1.0"
   },
